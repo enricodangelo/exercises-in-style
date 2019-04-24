@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body onload="start_game()">
+    <script type="application/javascript">
+        /* colors array in alphabetical order */
+        var colors = ["AliceBlue", "Aquamarine", "Chartreuse", "Crimson", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "Gold", "GreenYellow", "HotPink", "OliveDrab", "Orange", "OrangeRed", "SpringGreen", "SteelBlue"];
+        var guesses = 0;
+
+        function start_game() {
+            var in_game = true;
+            var guess;
+            var color_to_guess_index = choose_color();
+
+            while (in_game) {
+                guess = ask_for_color();
+                guesses += 1;
+
+                var guessed = check_guess(color_to_guess_index, guess);
+
+                if (guessed) {
+                    in_game = false;
+                }
+            }
+        }
+
+        function choose_color() {
+            var color_index = Math.floor(Math.random() * colors.length);
+
+            //DEBUG
+            alert("Color: " + colors[color_index]);
+            console.log("Color: " + colors[color_index]);
+
+            return color_index;
+        }
+
+        function ask_for_color() {
+            var message = "I am thinking of one of these colors:\n\n" + colors.join(", ") + "\n\nWhat color am I thinking of?";
+            var guess = prompt(message);
+            return guess;
+        }
+
+        function check_guess(color_to_guess_index, guess) {
+            var guess_index = colors.indexOf(guess);
+            var message;
+            var guessed = false;
+
+            /* since the array is in alphabetical order I check the indexes of the target and the guess */
+            if (guess_index == -1) {
+                //not a color
+                message = "Sorry, I don't recognize your color.\n\nPlease try again.";
+            } else if (guess_index < color_to_guess_index) {
+                //too small
+                message = "Sorry, your guess is not correct!.\n\nHint: your color is alphabetically lower than mine\n\nPlease try again.";
+            } else if (guess_index > color_to_guess_index) {
+                //too big
+                message = "Sorry, your guess is not correct!.\n\nHint: your color is alphabetically higher than mine\n\nPlease try again.";
+            } else {
+                //guessed!
+                change_background(guess_index);
+                message = "Congratulations! You have guessed the color!\n\n It took you " + guesses + " guesses to finish the game!\n\nYou can see the colour in the background";
+                guessed = true;
+            }
+
+            alert(message);
+            return guessed;
+        }
+
+        function change_background(guess_index) {
+            document.body.style.background = colors[guess_index];
+        }
+    </script>
+</body>
+
+</html>

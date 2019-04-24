@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Example 06</title>
+</head>
+
+<body>
+    <!-- enctype="multipart/form-data" serve per il file upload, poi ci vuole per forza POST -->
+    <form method="post" enctype="multipart/form-data">
+        <p>My form!!!! yeah!!!!!!!!!</p>
+        <input type="text" placeholder="Sono solo un placeholder" autofocus/>
+
+        <p>checkbox</p>
+        <input type="checkbox" name="cbox" value="1">uno
+        <br>
+        <input type="checkbox" name="cbox" value="2">due
+        <br>
+        <input type="checkbox" name="cbox" value="3">tre
+        <br>
+
+        <p>radio</p>
+        <input type="radio" name="rad" value="1">uno
+        <br>
+        <input type="radio" name="rad" value="2">due
+        <br>
+        <input type="radio" name="rad" value="3">tre
+        <br>
+
+        <p>select</p>
+        <select name="cities">
+            <option value="hk">Hong Kong</option>
+            <option value="vc">Vancouver</option>
+            <option value="sf">San Francisco</option>
+        </select>
+
+        <br>
+        <br>
+        <input type="file" name="the_fucking_file">
+
+        <input type="number">
+        <input type="date">
+        <input type="color">
+        <input type="range">
+        <input type="time">
+
+        <br>
+        <input type="submit" value="Upload this f**king form!!!">
+    </form>
+</body>
+
+</html>

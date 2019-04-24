@@ -1,0 +1,6 @@
+*.swp
+*.sqlite
+*.db
+/web/web-frameworks/conFusion_exercice_04/conFusion ex 04/nbproject/private/
+bower_components/
+node_modules/

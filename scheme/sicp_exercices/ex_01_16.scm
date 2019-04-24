@@ -1,0 +1,10 @@
+(define (fast-exp x n)
+    (define (fast-exp-aux x n a)
+        (cond ((= n 0) a)
+              ((even? n) (fast-exp-aux (* x x) (/ n 2) a))
+              (else (fast-exp-aux x (- n 1) (* a x)))
+        )
+    )
+
+    (fast-exp-aux x n 1)
+)

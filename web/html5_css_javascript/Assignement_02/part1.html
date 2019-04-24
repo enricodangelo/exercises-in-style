@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body onload="start_game()">
+    <script type="application/javascript">
+        /* colors array in alphabetical order */
+        var colors = ["AliceBlue", "Aquamarine", "Chartreuse", "Crimson", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "Gold", "GreenYellow", "HotPink", "OliveDrab", "Orange", "OrangeRed", "SpringGreen", "SteelBlue"];
+
+        function start_game() {
+            var in_game = true;
+            var guess;
+            var color_to_guess_index = choose_color();
+
+            while (in_game) {
+                guess = ask_for_color();
+
+                var guessed = check_guess(color_to_guess_index, guess);
+
+                if (guessed) {
+                    in_game = false;
+                }
+            }
+        }
+
+        function choose_color() {
+            var color_index = Math.floor(Math.random() * colors.length);
+
+            //DEBUG
+            alert("Color: " + colors[color_index]);
+            console.log("Color: " + colors[color_index]);
+
+            return color_index;
+        }
+
+        function ask_for_color() {
+            var message = "I am thinking of one of these colors:\n\n" + colors.join(", ") + "\n\nWhat color am I thinking of?";
+            var guess = prompt(message);
+            return guess;
+        }
+
+        function check_guess(color_to_guess_index, guess) {
+            var guess_index = colors.indexOf(guess);
+            var guessed = false;
+
+            /* since the array is in alphabetical order I check the indexes of the target and the guess */
+            if (guess_index == color_to_guess_index) {
+                //guessed!
+                guessed = true;
+            }
+
+            return guessed;
+        }
+    </script>
+</body>
+
+</html>
